@@ -4,4 +4,4 @@
 
 **Используемые технологии:** Flexbox-вёрстка, позиционирование элементов, Grid layout, адаптивная и резиновая вёрстки, JavaScript, разметка и вёрстка форм.
 
-GitHub Pages
+GitHub Pages https://simanazarova.github.io/mesto/index.html
