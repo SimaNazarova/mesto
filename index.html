@@ -17,70 +17,70 @@
       <div class="profile-info">
        <div class="profile__text">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button"></button>
+          <button class="profile__edit-button" aria-label="редактировать" ></button>
         </div>
           <p class="profile__name-about">Исследователь океана</p>
       </div>
-      <button class="profile__add-button"></button>
+      <button class="profile__add-button" aria-label="добавить" ></button>
     </section>
 
     <section class="elements">
-      <div class="element">
-        <img class="element__image" src="./images/honkong.jpg" alt="фотография">
-        <div class="element__image-name">
-          <h2 class="element__name">Гонконг</h2>
-          <button class="element__like-button"></button>
-        </div>
-      </div>
+      <ul class="elements__table">
+        <li class="element">
+          <img class="element__image" src="./images/hongkong.jpg" alt="фотография">
+          <div class="element__image-name">
+            <h2 class="element__name">Гонконг</h2>
+            <button class="element__like-button" aria-label="лайк"></button>
+          </div>
+        </li>
 
-      <div class="element">
-        <img class="element__image" src="./images/japan.jpg" alt="фотография">
-        <div class="element__image-name">
-          <h2 class="element__name">Токио</h2>
-          <button class="element__like-button"></button>
-        </div>
-      </div>
+        <li class="element">
+          <img class="element__image" src="./images/japan.jpg" alt="фотография">
+          <div class="element__image-name">
+            <h2 class="element__name">Токио</h2>
+            <button class="element__like-button" aria-label="лайк"></button>
+          </div>
+        </li>
 
-      <div class="element">
-        <img class="element__image" src="./images/china.jpg" alt="фотография">
-        <div class="element__image-name">
-          <h2 class="element__name">Сиань</h2>
-          <button class="element__like-button"></button>
-        </div>
-      </div>
+        <li class="element">
+          <img class="element__image" src="./images/china.jpg" alt="фотография">
+          <div class="element__image-name">
+            <h2 class="element__name">Сиань</h2>
+            <button class="element__like-button" aria-label="лайк"></button>
+          </div>
+        </li>
 
-      <div class="element">
-        <img class="element__image" src="./images/busan.jpg" alt="фотография">
-        <div class="element__image-name">
-          <h2 class="element__name">Пусан</h2>
-          <button class="element__like-button"></button>
-        </div>
-      </div>
+        <li class="element">
+          <img class="element__image" src="./images/busan.jpg" alt="фотография">
+          <div class="element__image-name">
+            <h2 class="element__name">Пусан</h2>
+            <button class="element__like-button" aria-label="лайк"></button>
+          </div>
+        </li>
 
-      <div class="element">
-        <img class="element__image" src="./images/singapore.jpg" alt="фотография">
-        <div class="element__image-name">
-          <h2 class="element__name">Сингапур</h2>
-          <button class="element__like-button"></button>
-        </div>
-      </div>
+        <li class="element">
+          <img class="element__image" src="./images/singapore.jpg" alt="фотография">
+          <div class="element__image-name">
+            <h2 class="element__name">Сингапур</h2>
+            <button class="element__like-button" aria-label="лайк"></button>
+          </div>
+        </li>
 
-      <div class="element">
-        <img class="element__image" src="./images/bangkok.jpg" alt="фотография">
-        <div class="element__image-name">
-          <h2 class="element__name">Бангкок</h2>
-          <button class="element__like-button"></button>
-        </div>
-      </div>
+        <li class="element">
+          <img class="element__image" src="./images/bangkok.jpg" alt="фотография">
+          <div class="element__image-name">
+            <h2 class="element__name">Бангкок</h2>
+            <button class="element__like-button" aria-label="лайк"></button>
+          </div>
+        </li>
+      </ul>
 
     </section>
 
     <section class="popup">
       <div class="popup__container">
 
-        <button class="popup__close">
-          <img src="./images/CloseIcon.svg" alt="Закрыть окно">
-        </button>
+        <button class="popup__close" aria-label="закрыть"></button>
 
         <div class="popup__content">
           <h2 class="popup__title">Редактировать профиль</h2>
@@ -88,8 +88,8 @@
           <form class="popup__form">
               <input class="popup__form-item popup__form-name" type="text" name="name" placeholder="Имя" maxlength="20" required>
 
-              <input class="popup__form-item popup__form-job" type="text" name="job" placeholder="О себе" maxlength="60" required>
-              <button class="popup__save-button" type="submit">Сохранить</button>
+              <input class="popup__form-item popup__form-job" type="text" name="job" placeholder="О себе" maxlength="80" required>
+              <button class="popup__save-button" type="submit" aria-label="сохранить">Сохранить</button>
           </form>
 
         </div>

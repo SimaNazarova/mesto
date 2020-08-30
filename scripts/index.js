@@ -14,16 +14,17 @@ let profileNameAbout = profile.querySelector('.profile__name-about');
 
 
 //функция для отображения pop-up
-let popupToggle = function () {
+function popupToggle () {
   popup.classList.toggle('popup_opened');
-  if (popup.classList.contains('popup_opened')){
-    nameInput.value = profileName.textContent;
-    jobInput.value = profileNameAbout.textContent;
-  }
 }
 
+nameInput.value = profileName.textContent;
+jobInput.value = profileNameAbout.textContent;
+
+
+
 //функция для закрытия pop-up по клику на затемнении
-let popupCloseByClickOnOverlay = function(event) {
+function popupCloseByClickOnOverlay (event) {
   if (event.target !== event.currentTarget) {
     return
   }
