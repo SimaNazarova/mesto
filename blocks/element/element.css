@@ -1,0 +1,10 @@
+.element {
+  max-width: 282px;
+}
+
+
+@media all and (max-width: 905px) {
+  .element {
+    margin: 0 auto;
+  }
+}

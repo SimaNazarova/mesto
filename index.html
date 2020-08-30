@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./pages/index.css">
+</head>
+<body class="page">
+<main class="content">
+    <header class="header">
+      <img class="header__logo" src="./images/logo.svg" alt="логотип">
+    </header>
+
+    <section class="profile">
+      <img class="profile__avatar" src="./images/Avatar.png" alt="аватар">
+      <div class="profile-info">
+       <div class="profile__text">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button"></button>
+        </div>
+          <p class="profile__name-about">Исследователь океана</p>
+      </div>
+      <button class="profile__add-button"></button>
+    </section>
+
+    <section class="elements">
+      <div class="element">
+        <img class="element__image" src="./images/honkong.jpg" alt="фотография">
+        <div class="element__image-name">
+          <h2 class="element__name">Гонконг</h2>
+          <button class="element__like-button"></button>
+        </div>
+      </div>
+
+      <div class="element">
+        <img class="element__image" src="./images/japan.jpg" alt="фотография">
+        <div class="element__image-name">
+          <h2 class="element__name">Токио</h2>
+          <button class="element__like-button"></button>
+        </div>
+      </div>
+
+      <div class="element">
+        <img class="element__image" src="./images/china.jpg" alt="фотография">
+        <div class="element__image-name">
+          <h2 class="element__name">Сиань</h2>
+          <button class="element__like-button"></button>
+        </div>
+      </div>
+
+      <div class="element">
+        <img class="element__image" src="./images/busan.jpg" alt="фотография">
+        <div class="element__image-name">
+          <h2 class="element__name">Пусан</h2>
+          <button class="element__like-button"></button>
+        </div>
+      </div>
+
+      <div class="element">
+        <img class="element__image" src="./images/singapore.jpg" alt="фотография">
+        <div class="element__image-name">
+          <h2 class="element__name">Сингапур</h2>
+          <button class="element__like-button"></button>
+        </div>
+      </div>
+
+      <div class="element">
+        <img class="element__image" src="./images/bangkok.jpg" alt="фотография">
+        <div class="element__image-name">
+          <h2 class="element__name">Бангкок</h2>
+          <button class="element__like-button"></button>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="popup">
+      <div class="popup__container">
+
+        <button class="popup__close">
+          <img src="./images/CloseIcon.svg" alt="Закрыть окно">
+        </button>
+
+        <div class="popup__content">
+          <h2 class="popup__title">Редактировать профиль</h2>
+
+          <form class="popup__form">
+              <input class="popup__form-item popup__form-name" type="text" name="name" placeholder="Имя" required>
+
+              <input class="popup__form-item popup__form-job" type="text" name="job" placeholder="О себе" required>
+              <button class="popup__save-button" type="submit">Сохранить</button>
+          </form>
+
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p class="footer__author">&copy; 2020 Серафима Назарова</p>
+    </footer>
+</main>
+<script src="./scripts/index.js" defer></script>
+</body>
+</html>
