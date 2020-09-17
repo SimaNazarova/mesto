@@ -13,3 +13,23 @@
   opacity: 0.6;
   cursor: pointer;
 }
+
+@media all and (max-width: 506px) {
+  .popup__save-button {
+    max-width: 200px;
+    margin: 36px 20px 30px 20px;
+    height: 40px;
+  }
+}
+
+.popup__button-text {
+  font-size: 14px;
+  line-height: 1.21;
+}
+
+@media all and (max-width: 506px) {
+  .popup__button-text {
+    font-size: 14px;
+    line-height: 1.21;
+  }
+}

@@ -26,58 +26,12 @@
 
     <section class="elements">
       <ul class="elements__table">
-        <li class="element">
-          <img class="element__image" src="./images/hongkong.jpg" alt="фотография">
-          <div class="element__image-name">
-            <h2 class="element__name">Гонконг</h2>
-            <button class="element__like-button" aria-label="лайк"></button>
-          </div>
-        </li>
 
-        <li class="element">
-          <img class="element__image" src="./images/japan.jpg" alt="фотография">
-          <div class="element__image-name">
-            <h2 class="element__name">Токио</h2>
-            <button class="element__like-button" aria-label="лайк"></button>
-          </div>
-        </li>
-
-        <li class="element">
-          <img class="element__image" src="./images/china.jpg" alt="фотография">
-          <div class="element__image-name">
-            <h2 class="element__name">Сиань</h2>
-            <button class="element__like-button" aria-label="лайк"></button>
-          </div>
-        </li>
-
-        <li class="element">
-          <img class="element__image" src="./images/busan.jpg" alt="фотография">
-          <div class="element__image-name">
-            <h2 class="element__name">Пусан</h2>
-            <button class="element__like-button" aria-label="лайк"></button>
-          </div>
-        </li>
-
-        <li class="element">
-          <img class="element__image" src="./images/singapore.jpg" alt="фотография">
-          <div class="element__image-name">
-            <h2 class="element__name">Сингапур</h2>
-            <button class="element__like-button" aria-label="лайк"></button>
-          </div>
-        </li>
-
-        <li class="element">
-          <img class="element__image" src="./images/bangkok.jpg" alt="фотография">
-          <div class="element__image-name">
-            <h2 class="element__name">Бангкок</h2>
-            <button class="element__like-button" aria-label="лайк"></button>
-          </div>
-        </li>
       </ul>
 
     </section>
 
-    <section class="popup">
+    <section class="popup popup_profile">
       <div class="popup__container">
 
         <button class="popup__close" aria-label="закрыть"></button>
@@ -89,7 +43,7 @@
               <input class="popup__form-item popup__form-name" type="text" name="name" placeholder="Имя" maxlength="20" required>
 
               <input class="popup__form-item popup__form-job" type="text" name="job" placeholder="О себе" maxlength="80" required>
-              <button class="popup__save-button" type="submit" aria-label="сохранить">Сохранить</button>
+              <button class="popup__save-button" type="submit" aria-label="сохранить"><span class="popup__button-text">Сохранить</span></button>
           </form>
 
         </div>
@@ -97,9 +51,48 @@
       </div>
     </section>
 
+    <section class="popup popup__add-card">
+      <div class="popup__container">
+
+        <button class="popup__close" aria-label="закрыть"></button>
+
+        <div class="popup__content">
+          <h2 class="popup__title">Новое место</h2>
+
+          <form class="popup__form">
+              <input class="popup__form-item popup__form-card-name" type="text" name="name" placeholder="Название" maxlength="20" required>
+
+              <input class="popup__form-item popup__form-link" type="text" name="link" placeholder="Ссылка на картинку" maxlength="100" required>
+              <button class="popup__save-button" type="submit" aria-label="сохранить"><span class="popup__button-text">Создать</span></button>
+          </form>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class ="popup popup__photo">
+      <div class="popup__photo-container">
+        <button class="popup__close"></button>
+        <img class="popup__image">
+        <h2 class="popup__image-name"></h2>
+      </div>
+    </section>
+
     <footer class="footer">
       <p class="footer__author">&copy; 2020 Серафима Назарова</p>
     </footer>
+
+    <template class ="item_template">
+      <li class="element">
+        <img class="element__image" alt="фотография">
+        <button class="element__delete-button"></button>
+        <div class="element__image-name">
+          <h2 class="element__name"></h2>
+          <button class="element__like-button" aria-label="лайк"></button>
+        </div>
+      </li>
+    </template>
 </main>
 <script src="./scripts/index.js" defer></script>
 </body>

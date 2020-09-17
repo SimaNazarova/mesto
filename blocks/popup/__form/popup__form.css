@@ -2,4 +2,8 @@
   margin-top: 26.26px;
 }
 
-
+@media all and (max-width: 506px) {
+  .popup__form {
+    margin-top: 0;
+  }
+}

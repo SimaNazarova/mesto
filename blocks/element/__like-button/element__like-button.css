@@ -3,8 +3,14 @@
   background-image:url(../../../images/like.svg);
   width: 20.76px;
   height: 18.13px;
-  background-color: #FFFFFF;
+  background-color:transparent;
   border: none;
   top: 31px;
   right: 22.24px;
+}
+
+
+.element__like-button:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }

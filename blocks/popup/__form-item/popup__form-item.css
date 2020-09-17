@@ -7,6 +7,14 @@
   font-size: 14px;
   margin-top: 29.74px;
   line-height: 1.21;
-  color: #000000;
+}
+
+@media all and (max-width: 506px) {
+  .popup__form-item {
+    margin: 20px 20px 0 20px;
+    font-size: 12px;
+    line-height: 1.25;
+    max-width: 200px;
+  }
 }
 
