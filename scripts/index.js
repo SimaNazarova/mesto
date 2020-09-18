@@ -58,7 +58,7 @@ const popupImage = popupPhoto.querySelector('.popup__image');
 const popupImageName = popupPhoto.querySelector('.popup__image-name');
 const popupPhotoClose = popupPhoto.querySelector('.popup__close');
 
-const itemTemplate = document.querySelector('.item_template').content;
+
 
 //функция для отображения pop-up----------------------------------------
 function popupToggle (popupOpen) {
@@ -107,7 +107,8 @@ function render() {
 
 
 function renderItem(card) {
-  const itemElement = itemTemplate.cloneNode(true);
+  const elementTemplate = document.querySelector('.element-template').content;
+  const itemElement = elementTemplate.cloneNode(true);
   itemElement.querySelector('.element__name').textContent = card.name;
   itemElement.querySelector('.element__image').src = card.link;
   itemElement.querySelector('.element__image').alt = card.name;
@@ -149,18 +150,18 @@ popupAddCard.addEventListener('submit', addCard);
 
 //функция для лайка--------------------------------------------
 
-  function handlerLike (evt) {
+  function likeHandler (evt) {
     evt.target.classList.toggle('element__like-button_active');
   }
 
 //функция по удалению карточек----------------------------------------------------
 
-function handlerDelete(evt) {
+function deleteHandler(evt) {
   evt.target.closest('.element').remove();
 }
 
 //функция просмотр фотографии-------------------------------------------------
-function viewPhoto (evt) {
+function viewPhotoHandler (evt) {
   popupToggle(popupPhoto);
   popupImage.src = evt.target.src;
   popupImageName.textContent = evt.target.alt;
@@ -174,18 +175,18 @@ popupPhotoClose.addEventListener('click', () => {
 
 //слушатели: лайк и удаление, просмотр фото
 function setListeners () {
-  document.querySelector('.element__like-button').addEventListener('click', handlerLike);
-  document.querySelector('.element__delete-button').addEventListener('click',handlerDelete);
-  document.querySelector('.element__image').addEventListener('click', viewPhoto);
+  document.querySelector('.element__like-button').addEventListener('click', likeHandler);
+  document.querySelector('.element__delete-button').addEventListener('click',deleteHandler);
+  document.querySelector('.element__image').addEventListener('click', viewPhotoHandler);
 }
 
 
 //функция для закрытия pop-up по клику на затемнении
-function popupCloseByClickOnOverlay (event) {
-  if (event.target !== event.currentTarget) {
+function popupCloseByClickOnOverlay (evt) {
+  if (evt.target !== evt.currentTarget) {
     return
   }
-  closePopup (event.target);
+  closePopup (evt.target);
 }
 
 //слушатели для закрытия pop-up по клику на затемнении
