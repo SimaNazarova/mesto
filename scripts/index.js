@@ -134,13 +134,6 @@ popupCloseButton.addEventListener('click', () => {
 });
 
 
-//слушатели: лайк, удаление, просмотр фото
-function setListeners () {
-  document.querySelector('.element__like-button').addEventListener('click', likeHandler);
-  document.querySelector('.element__delete-button').addEventListener('click',deleteHandler);
-  document.querySelector('.element__image').addEventListener('click', viewPhotoHandler);
-}
-
 
 //слушатель открытия попапа по добавлению фото
 popupAddPhotoButton.addEventListener('click', () => {
@@ -188,13 +181,15 @@ function makeCard(card) {
   elementName.textContent = card.name;
   elementImage.src = card.link;
   elementImage.alt = card.name;
+  itemElement.querySelector('.element__like-button').addEventListener('click', likeHandler);
+  itemElement.querySelector('.element__delete-button').addEventListener('click',deleteHandler);
+  itemElement.querySelector('.element__image').addEventListener('click', viewPhotoHandler);
   return itemElement;
 }
 
 //функция для добавления карточки в HTML
 function renderItem(item) {
   elementsTable.prepend(makeCard(item));
-  setListeners();
 }
 
 //отрисовка всех карточек из массива
