@@ -116,6 +116,13 @@ function popupCloseByClickOnOverlay (evt) {
   closePopup (evt.target);
 }
 
+//фуенкция для закрытия попапа  по нажатию на Esc.
+function closeByEsc(evt) {
+  const openPopup = document.querySelector('.popup_opened');
+  if (evt.key === 'Escape') {
+    closePopup(openPopup);
+  };
+};
 
 //-------------------------------------------слушатели-------------------------------------------------
 
@@ -152,8 +159,6 @@ popupAddCard.addEventListener('submit', addCard);
 
 
 
-
-//слушатель для закрытия попапа с фото
 popupPhotoClose.addEventListener('click', () => {
   closePopup(popupPhoto);
 })
@@ -167,6 +172,12 @@ popupAddCard.addEventListener('click', popupCloseByClickOnOverlay);
 
 //слушатель отправки введенных данных в профиль
 formElement.addEventListener('submit', formSubmitHandler);
+
+
+//слушатель для закрытия попапа по нажатию на Esc.
+document.addEventListener('keydown', (evt) => {
+  closeByEsc(evt);
+});
 
 
 

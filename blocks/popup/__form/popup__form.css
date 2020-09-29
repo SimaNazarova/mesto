@@ -1,5 +1,6 @@
  .popup__form {
   margin-top: 26.26px;
+  position: relative;
 }
 
 @media all and (max-width: 506px) {
