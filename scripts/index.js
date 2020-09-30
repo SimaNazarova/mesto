@@ -25,53 +25,64 @@ const initialCards = [
   }
 ];
 
-const popup = document.querySelector('.popup');
-const popupCloseButton = popup.querySelector('.popup__close');
-const formElement = popup.querySelector('.popup__form');
-const nameInput = formElement.querySelector('.popup__form-name');
-const jobInput = formElement.querySelector('.popup__form-job');
 
+//----профиль----
 const profile = document.querySelector('.profile');
 const profileEditButton = profile.querySelector('.profile__edit-button');
 const profileName = profile.querySelector('.profile__name');
 const profileNameAbout = profile.querySelector('.profile__name-about');
 const popupAddPhotoButton = profile.querySelector('.profile__add-button');
 
-const popupProfile = document.querySelector('.popup__profile');
+//----попап редактирования профиля-----
 
-const elementsTable = document.querySelector('.elements__table');
+const popupProfile = document.querySelector('.popup_profile');
+const popupProfileCloseButton = popupProfile.querySelector('.popup__close');
+const profileFormElement = popupProfile.querySelector('.popup__form');
+const profileNameInput = profileFormElement.querySelector('.popup__form-name');
+const profileJobInput = profileFormElement.querySelector('.popup__form-job');
 
+//----попап добавления карточки-----
 
-const popupAddCard = document.querySelector('.popup__add-card');
+const popupAddCard = document.querySelector('.popup_add-card');
 const popupAddCardCloseButton = popupAddCard.querySelector('.popup__close');
 const cardNameInput = popupAddCard.querySelector('.popup__form-card-name');
-const linkInput = popupAddCard.querySelector('.popup__form-link');
+const cardLinkInput = popupAddCard.querySelector('.popup__form-link');
 const popupCardForm = popupAddCard.querySelector('.popup__form');
+const popupAddCardSaveButton = popupAddCard.querySelector('.popup__save-button');
 
-const popupPhoto  = document.querySelector('.popup__photo');
+//----попап добавления карточки-----
+
+const popupPhoto  = document.querySelector('.popup_photo');
 const popupImage = popupPhoto.querySelector('.popup__image');
 const popupImageName = popupPhoto.querySelector('.popup__image-name');
 const popupPhotoClose = popupPhoto.querySelector('.popup__close');
+
+
+//----загрузка карточек-----
+const elementsTable = document.querySelector('.elements__table');
+const elementTemplate = document.querySelector('.element-template').content;
 
 
 //--------------------------------------------функции------------------------------------------
 
 
 //функция для отображения pop-up
-function popupToggle (popupOpen) {
-  popupOpen.classList.toggle('popup_opened');
+function openPopup (popup) {
+  popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closeByEsc);
 }
 
 //функция для закрытия попапа
-function closePopup (closePopup) {
-  closePopup.classList.remove('popup_opened');
+function closePopup (popup) {
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEsc);
 }
 
 //функция-обработчик «отправки» формы изменных данных в профайле
 function formSubmitHandler (event) {
   event.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileNameAbout.textContent = jobInput.value;
+  profileName.textContent = profileNameInput.value;
+  profileNameAbout.textContent = profileJobInput.value;
   closePopup(popupProfile);
 }
 
@@ -81,11 +92,10 @@ function addCard (evt) {
   evt.preventDefault();
   const item = {
     name: cardNameInput.value,
-    link: linkInput.value
+    link: cardLinkInput.value
   }
   renderItem(item);
   closePopup(popupAddCard);
-  popupCardForm.reset();
 }
 
 
@@ -103,7 +113,7 @@ evt.target.closest('.element').remove();
 
 //функция просмотр фотографии
 function viewPhotoHandler (evt) {
-popupToggle(popupPhoto);
+  openPopup(popupPhoto);
 popupImage.src = evt.target.src;
 popupImageName.textContent = evt.target.alt;
 }
@@ -116,7 +126,7 @@ function popupCloseByClickOnOverlay (evt) {
   closePopup (evt.target);
 }
 
-//фуенкция для закрытия попапа  по нажатию на Esc.
+//функция для закрытия попапа  по нажатию на Esc.
 function closeByEsc(evt) {
   const openPopup = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
@@ -124,19 +134,24 @@ function closeByEsc(evt) {
   };
 };
 
+
+function resetButton() {
+  popupAddCardSaveButton.classList.add('popup__save-button_inactive');
+  popupAddCardSaveButton.setAttribute('disabled', true);
+}
 //-------------------------------------------слушатели-------------------------------------------------
 
 //слушатель для открытия попапа с редактированием данных
 profileEditButton.addEventListener('click', () => {
-  popupToggle(popupProfile);
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileNameAbout.textContent;
+  openPopup(popupProfile);
+  profileNameInput.value = profileName.textContent;
+  profileJobInput.value = profileNameAbout.textContent;
 });
 
 
 
 //слушатель для закрытия попапа с редактированием данных
-popupCloseButton.addEventListener('click', () => {
+popupProfileCloseButton.addEventListener('click', () => {
   closePopup(popupProfile);
 });
 
@@ -144,8 +159,11 @@ popupCloseButton.addEventListener('click', () => {
 
 //слушатель открытия попапа по добавлению фото
 popupAddPhotoButton.addEventListener('click', () => {
-  popupToggle(popupAddCard);
+  resetButton();
+  popupCardForm.reset();
+  openPopup(popupAddCard);
 });
+
 
 
 //слушатель закрытия попапа по добавлению фото
@@ -171,13 +189,7 @@ popupAddCard.addEventListener('click', popupCloseByClickOnOverlay);
 
 
 //слушатель отправки введенных данных в профиль
-formElement.addEventListener('submit', formSubmitHandler);
-
-
-//слушатель для закрытия попапа по нажатию на Esc.
-document.addEventListener('keydown', (evt) => {
-  closeByEsc(evt);
-});
+profileFormElement.addEventListener('submit', formSubmitHandler);
 
 
 
@@ -185,7 +197,6 @@ document.addEventListener('keydown', (evt) => {
 
 //функция для создания карточек
 function makeCard(card) {
-  const elementTemplate = document.querySelector('.element-template').content;
   const itemElement = elementTemplate.cloneNode(true);
   const elementName = itemElement.querySelector('.element__name');
   const elementImage = itemElement.querySelector('.element__image');

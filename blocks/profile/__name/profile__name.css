@@ -5,6 +5,9 @@
   font-weight: 500;
   margin-right: 0;
   text-overflow: ellipsis;
+  max-width: 500px;
+  white-space: normal;
+  word-wrap: break-word;
 }
 
 @media all and (max-width: 500px) {
@@ -12,5 +15,6 @@
     font-size: 27px;
     line-height: 2.07;
     text-align: center;
+    max-width: 270px;
   }
 }

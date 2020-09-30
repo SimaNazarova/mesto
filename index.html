@@ -38,7 +38,7 @@
 
 </main>
 
-<section class="popup popup__profile">
+<section class="popup popup_profile">
   <div class="popup__container">
 
     <button class="popup__close" aria-label="закрыть"></button>
@@ -46,7 +46,7 @@
     <div class="popup__content">
       <h2 class="popup__title">Редактировать профиль</h2>
 
-      <form class="popup__form" novalidate>
+      <form class="popup__form" name="edit-profile-form" novalidate>
           <input class="popup__form-item popup__form-name" id="name-input" type="text" name="name" placeholder="Имя" minlength="2" maxlength="40" required>
           <span class="popup__error" id="name-input-error"></span>
           <input class="popup__form-item popup__form-job" id="job-input" type="text" name="job" placeholder="О себе" minlength="2" maxlength="200" required>
@@ -59,7 +59,7 @@
   </div>
 </section>
 
-<section class="popup popup__add-card">
+<section class="popup popup_add-card">
   <div class="popup__container">
 
     <button class="popup__close" aria-label="закрыть"></button>
@@ -67,7 +67,7 @@
     <div class="popup__content">
       <h2 class="popup__title">Новое место</h2>
 
-      <form class="popup__form" novalidate>
+      <form class="popup__form" name="add-card-form" novalidate>
           <input class="popup__form-item popup__form-card-name"  id="name-card-input" type="text" name="name" placeholder="Название" minlength="2" maxlength="30" required>
           <span class="popup__error" id="name-card-input-error"></span>
           <input class="popup__form-item popup__form-link"  id="link-input" type="url" name="link" placeholder="Ссылка на картинку" maxlength="100" required>
@@ -78,7 +78,7 @@
   </div>
 </section>
 
-<section class ="popup popup__photo">
+<section class ="popup popup_photo">
   <div class="popup__photo-container">
     <button class="popup__close"></button>
     <img class="popup__image">

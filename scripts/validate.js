@@ -61,7 +61,7 @@ function setEventListeners (form, objSet) {
   }
  }
 
-//функция для прохождения по массиву, чтобы выявить хотя бы одно невалидное поле----------------------------------
+//функция для прохождения по массиву, чтобы выявить хотя бы одно невалидное поле----------
  function hasInvalidInput(inputList){
   return inputList.some((inputElement) => {
   return !inputElement.validity.valid;
