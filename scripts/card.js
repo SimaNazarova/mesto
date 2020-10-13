@@ -1,4 +1,4 @@
-export default class Card {
+  class Card {
   constructor(data, selector) {
     this._link = data.link;
     this._name = data.name;
@@ -85,4 +85,4 @@ _closeByEsc(evt) {
 }
 
 
-
+export default Card;

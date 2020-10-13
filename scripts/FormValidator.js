@@ -1,4 +1,4 @@
-export default class FormValidator {
+   class FormValidator {
   constructor(formSelector, objSet) {
     this._formSelector = formSelector
     this._formElement = document.querySelector(formSelector);
@@ -99,5 +99,5 @@ enableValidation() {
 }
 
 
-
+export default FormValidator;
 
