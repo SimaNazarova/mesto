@@ -1,30 +1,6 @@
-const initialCards = [
-  {
-      name: 'Гонконг',
-      link: 'https://images.unsplash.com/photo-1516893676001-52fdf7605797?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-  },
-  {
-      name: 'Токио',
-      link: 'https://images.unsplash.com/photo-1557409518-691ebcd96038?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-  },
-  {
-      name: 'Сиань',
-      link: 'https://images.unsplash.com/photo-1483135349295-9e3c48106ee6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80'
-  },
-  {
-      name: 'Пусан',
-      link: 'https://images.unsplash.com/photo-1597231125133-ff5d83966e8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1349&q=80'
-  },
-  {
-      name: 'Сингапур',
-      link: 'https://images.unsplash.com/photo-1496898382483-9a789056ffe8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80'
-  },
-  {
-      name: 'Бангкок',
-      link: 'https://images.unsplash.com/photo-1510379872535-9310dc6fd6a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-  }
-];
-
+import  Card from './card.js';
+import  FormValidator from './formValidator.js';
+import  {initialCards, objSet} from './objects.js';
 
 //----профиль----
 const profile = document.querySelector('.profile');
@@ -53,14 +29,13 @@ const popupAddCardSaveButton = popupAddCard.querySelector('.popup__save-button')
 //----попап добавления карточки-----
 
 const popupPhoto  = document.querySelector('.popup_photo');
-const popupImage = popupPhoto.querySelector('.popup__image');
-const popupImageName = popupPhoto.querySelector('.popup__image-name');
+
 const popupPhotoClose = popupPhoto.querySelector('.popup__close');
 
 
 //----загрузка карточек-----
 const elementsTable = document.querySelector('.elements__table');
-const elementTemplate = document.querySelector('.element-template').content;
+
 
 
 //--------------------------------------------функции------------------------------------------
@@ -94,29 +69,15 @@ function addCard (evt) {
     name: cardNameInput.value,
     link: cardLinkInput.value
   }
-  renderItem(item);
+  const card = new Card(item, '.element-template');
+  // Создаём карточку и возвращаем наружу
+  const cardElement = card.generateCard();
+
+  // Добавляем в DOM
+  elementsTable.prepend(cardElement);
   closePopup(popupAddCard);
 }
 
-
-//функция для лайка
-
-function likeHandler (evt) {
-  evt.target.classList.toggle('element__like-button_active');
-}
-
-//функция по удалению карточек
-
-function deleteHandler(evt) {
-evt.target.closest('.element').remove();
-}
-
-//функция просмотр фотографии
-function viewPhotoHandler (evt) {
-  openPopup(popupPhoto);
-popupImage.src = evt.target.src;
-popupImageName.textContent = evt.target.alt;
-}
 
 //функция для закрытия pop-up по клику на затемнении
 function popupCloseByClickOnOverlay (evt) {
@@ -183,9 +144,9 @@ popupPhotoClose.addEventListener('click', () => {
 
 
 //слушатели для закрытия pop-up по клику на затемнении
-popupPhoto.addEventListener('click', popupCloseByClickOnOverlay);
-popupProfile.addEventListener('click', popupCloseByClickOnOverlay);
-popupAddCard.addEventListener('click', popupCloseByClickOnOverlay);
+popupPhoto.addEventListener('mousedown', popupCloseByClickOnOverlay);
+popupProfile.addEventListener('mousedown', popupCloseByClickOnOverlay);
+popupAddCard.addEventListener('mousedown', popupCloseByClickOnOverlay);
 
 
 //слушатель отправки введенных данных в профиль
@@ -193,32 +154,25 @@ profileFormElement.addEventListener('submit', formSubmitHandler);
 
 
 
-//---------------------------- функции для загрузки изначальных карточек на страницу-----
+//---------------------------- функция для загрузки изначальных карточек на страницу-----
 
-//функция для создания карточек
-function makeCard(card) {
-  const itemElement = elementTemplate.cloneNode(true);
-  const elementName = itemElement.querySelector('.element__name');
-  const elementImage = itemElement.querySelector('.element__image');
-  elementName.textContent = card.name;
-  elementImage.src = card.link;
-  elementImage.alt = card.name;
-  itemElement.querySelector('.element__like-button').addEventListener('click', likeHandler);
-  itemElement.querySelector('.element__delete-button').addEventListener('click',deleteHandler);
-  itemElement.querySelector('.element__image').addEventListener('click', viewPhotoHandler);
-  return itemElement;
-}
+initialCards.forEach((item) => {
+  // Создадим экземпляр карточки
+  const card = new Card(item, '.element-template');
+  // Создаём карточку и возвращаем наружу
+  const cardElement = card.generateCard();
 
-//функция для добавления карточки в HTML
-function renderItem(item) {
-  elementsTable.prepend(makeCard(item));
-}
-
-//отрисовка всех карточек из массива
-function render() {
-  initialCards.forEach(renderItem);
-}
+  // Добавляем в DOM
+  elementsTable.prepend(cardElement);
+});
 
 
-render();
+//------------------------------------------------
+//валидация данных профайла
+const profileValidator = new FormValidator(objSet.profileValidator, objSet);
+profileValidator.enableValidation();
 
+
+//валидация карточки
+const cardValidator = new FormValidator(objSet.cardValidator, objSet);
+cardValidator.enableValidation();
