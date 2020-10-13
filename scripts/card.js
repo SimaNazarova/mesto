@@ -69,7 +69,8 @@ _viewPhotoHandler () {
   const popupImage = document.querySelector('.popup__image');
   const popupImageName = document.querySelector('.popup__image-name');
   popupImage.src = this._link;
-  popupImageName.alt = this._name;
+  popupImage.alt = this._name;
+  popupImageName.textContent = this._name;
   this._openPopup(popupPhoto);
 }
 
