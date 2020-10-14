@@ -47,8 +47,17 @@ function openPopup (popup) {
   document.addEventListener('keydown', closeByEsc);
 }
 
+//функция для закрытия попапа  по нажатию на Esc.
+function closeByEsc(evt) {
+  const openPopup = document.querySelector('.popup_opened');
+  if (evt.key === 'Escape') {
+    closePopup(openPopup);
+  };
+};
+
+
 //функция для закрытия попапа
-function closePopup (popup) {
+ function closePopup (popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeByEsc);
 }
@@ -87,26 +96,14 @@ function popupCloseByClickOnOverlay (evt) {
   closePopup (evt.target);
 }
 
-//функция для закрытия попапа  по нажатию на Esc.
-function closeByEsc(evt) {
-  const openPopup = document.querySelector('.popup_opened');
-  if (evt.key === 'Escape') {
-    closePopup(openPopup);
-  };
-};
 
-
-function resetButton() {
-  popupAddCardSaveButton.classList.add('popup__save-button_inactive');
-  popupAddCardSaveButton.setAttribute('disabled', true);
-}
 //-------------------------------------------слушатели-------------------------------------------------
 
 //слушатель для открытия попапа с редактированием данных
 profileEditButton.addEventListener('click', () => {
-  openPopup(popupProfile);
   profileNameInput.value = profileName.textContent;
   profileJobInput.value = profileNameAbout.textContent;
+  openPopup(popupProfile);
 });
 
 
@@ -120,8 +117,8 @@ popupProfileCloseButton.addEventListener('click', () => {
 
 //слушатель открытия попапа по добавлению фото
 popupAddPhotoButton.addEventListener('click', () => {
-  resetButton();
   popupCardForm.reset();
+  popupAddCardSaveButton.classList.toggle('popup__save-button_inactive');
   openPopup(popupAddCard);
 });
 
@@ -163,7 +160,7 @@ initialCards.forEach((item) => {
   const cardElement = card.generateCard();
 
   // Добавляем в DOM
-  elementsTable.prepend(cardElement);
+  elementsTable.append(cardElement);
 });
 
 
@@ -176,3 +173,7 @@ profileValidator.enableValidation();
 //валидация карточки
 const cardValidator = new FormValidator(objSet.cardValidator, objSet);
 cardValidator.enableValidation();
+
+
+
+export {openPopup, closePopup};

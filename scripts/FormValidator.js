@@ -7,8 +7,8 @@
     this._inactiveButtonClass = objSet.inactiveButtonClass
     this._inputErrorClass = objSet.inputErrorClass
     this._errorClass = objSet.errorClass
-    this._profileValidator = objSet.profileValidator
-    this._cardValidator = objSet.cardValidator
+    this._buttonElement = objSet.buttonElement
+    this._inputList = objSet.inputList
   }
 
 
@@ -42,14 +42,14 @@ if (!inputElement.validity.valid) {
 
 // функция установки обработчикоы события-------------------------
 _setEventListeners () {
- const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector)); //массив из инпутов
- const buttonElement = this._formElement.querySelector(this._submitButtonSelector);
+  this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector)); //массив из инпутов
+  this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
 
 // чтобы проверить состояние кнопки в самом начале
-this._toggleButtonState(inputList, buttonElement);
+this._toggleButtonState(this._inputList, this._buttonElement);
 
  // Обойдём все элементы полученной коллекции
- inputList.forEach((inputElement) => {
+ this._inputList.forEach((inputElement) => {
 
   // каждому полю добавим обработчик события input
  inputElement.addEventListener('input', () => {
@@ -57,27 +57,27 @@ this._toggleButtonState(inputList, buttonElement);
       // Внутри колбэка вызовем checkInputValidity,
       // передав ей форму и проверяемый элемент
       this._checkInputValidity(inputElement);
-      this._toggleButtonState(inputList, buttonElement);
+      this._toggleButtonState();
  });
  });
 };
 
 
 //функция для вкл/выкл кнопки----------------------------------
- _toggleButtonState  (inputList, buttonElement) {
+ _toggleButtonState  () {
 
-  if (this._hasInvalidInput(inputList)) {
-    buttonElement.classList.add(this._inactiveButtonClass);
-    buttonElement.setAttribute('disabled', true);
+  if (this._hasInvalidInput(this._inputList)) {
+    this._buttonElement.classList.add(this._inactiveButtonClass);
+    this._buttonElement.setAttribute('disabled', true);
   } else {
-    buttonElement.classList.remove(this._inactiveButtonClass);
-    buttonElement.removeAttribute('disabled');
+    this._buttonElement.classList.remove(this._inactiveButtonClass);
+    this._buttonElement.removeAttribute('disabled');
   }
  }
 
 //функция для прохождения по массиву, чтобы выявить хотя бы одно невалидное поле----------
- _hasInvalidInput(inputList){
-  return inputList.some((inputElement) => {
+ _hasInvalidInput(){
+  return this._inputList.some((inputElement) => {
   return !inputElement.validity.valid;
 });
 }
@@ -86,16 +86,9 @@ this._toggleButtonState(inputList, buttonElement);
 //функция для обработки всех форм на странице-------------------------------
 
 enableValidation() {
-
-  // Найдём все формы с указанным классом в DOM, сделаем из них массив
-  const formList = Array.from(document.querySelectorAll(this._formSelector));
-
-  // Переберём полученную коллекцию
-  formList.forEach(() => {
-    this._setEventListeners(); // Для каждой формы вызовем функцию setEventListeners,передав ей элемент формы
-  });
+  this._formList = document.querySelector(this._formSelector);
+  this._setEventListeners();
 };
-
 }
 
 

@@ -1,3 +1,9 @@
+import {openPopup, closePopup} from './index.js';
+
+const popupPhoto  = document.querySelector('.popup_photo');
+const popupImage = document.querySelector('.popup__image');
+const popupImageName = document.querySelector('.popup__image-name');
+
   class Card {
   constructor(data, selector) {
     this._link = data.link;
@@ -37,17 +43,6 @@
     this._element.querySelector('.element__image').addEventListener('click',  () =>  this._viewPhotoHandler());
   }
 
-//функция для отображения pop-up
-_openPopup (popup) {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', this._closeByEsc);
-}
-
-//функция для закрытия попапа
-_closePopup (popup) {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', this._closeByEsc);
-}
 
 
 //функция для лайка
@@ -65,20 +60,17 @@ _deleteHandler() {
 
 //функция просмотр фотографии
 _viewPhotoHandler () {
-  const popupPhoto  = document.querySelector('.popup_photo');
-  const popupImage = document.querySelector('.popup__image');
-  const popupImageName = document.querySelector('.popup__image-name');
   popupImage.src = this._link;
   popupImage.alt = this._name;
   popupImageName.textContent = this._name;
-  this._openPopup(popupPhoto);
+  openPopup(popupPhoto);
 }
 
 //функция для закрытия попапа  по нажатию на Esc.
 _closeByEsc(evt) {
   const openPopup = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
-    openPopup.classList.remove('popup_opened');
+   closePopup(openPopup);
   };
 };
 
