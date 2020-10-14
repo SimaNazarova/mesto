@@ -7,8 +7,6 @@
     this._inactiveButtonClass = objSet.inactiveButtonClass
     this._inputErrorClass = objSet.inputErrorClass
     this._errorClass = objSet.errorClass
-    this._buttonElement = objSet.buttonElement
-    this._inputList = objSet.inputList
   }
 
 
@@ -46,7 +44,7 @@ _setEventListeners () {
   this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
 
 // чтобы проверить состояние кнопки в самом начале
-this._toggleButtonState(this._inputList, this._buttonElement);
+this.toggleButtonState(this._inputList, this._buttonElement);
 
  // Обойдём все элементы полученной коллекции
  this._inputList.forEach((inputElement) => {
@@ -57,14 +55,14 @@ this._toggleButtonState(this._inputList, this._buttonElement);
       // Внутри колбэка вызовем checkInputValidity,
       // передав ей форму и проверяемый элемент
       this._checkInputValidity(inputElement);
-      this._toggleButtonState();
+      this.toggleButtonState();
  });
  });
 };
 
 
 //функция для вкл/выкл кнопки----------------------------------
- _toggleButtonState  () {
+ toggleButtonState () {
 
   if (this._hasInvalidInput(this._inputList)) {
     this._buttonElement.classList.add(this._inactiveButtonClass);
@@ -86,7 +84,6 @@ this._toggleButtonState(this._inputList, this._buttonElement);
 //функция для обработки всех форм на странице-------------------------------
 
 enableValidation() {
-  this._formList = document.querySelector(this._formSelector);
   this._setEventListeners();
 };
 }

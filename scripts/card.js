@@ -1,4 +1,4 @@
-import {openPopup, closePopup} from './index.js';
+import {openPopup} from './utils.js';
 
 const popupPhoto  = document.querySelector('.popup_photo');
 const popupImage = document.querySelector('.popup__image');
@@ -65,15 +65,6 @@ _viewPhotoHandler () {
   popupImageName.textContent = this._name;
   openPopup(popupPhoto);
 }
-
-//функция для закрытия попапа  по нажатию на Esc.
-_closeByEsc(evt) {
-  const openPopup = document.querySelector('.popup_opened');
-  if (evt.key === 'Escape') {
-   closePopup(openPopup);
-  };
-};
-
 
 }
 

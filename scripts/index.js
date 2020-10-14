@@ -1,6 +1,7 @@
 import  Card from './card.js';
 import  FormValidator from './FormValidator.js';
 import  {initialCards, objSet} from './objects.js';
+import  {openPopup, closePopup} from './utils.js';
 
 //----профиль----
 const profile = document.querySelector('.profile');
@@ -41,26 +42,6 @@ const elementsTable = document.querySelector('.elements__table');
 //--------------------------------------------функции------------------------------------------
 
 
-//функция для отображения pop-up
-function openPopup (popup) {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closeByEsc);
-}
-
-//функция для закрытия попапа  по нажатию на Esc.
-function closeByEsc(evt) {
-  const openPopup = document.querySelector('.popup_opened');
-  if (evt.key === 'Escape') {
-    closePopup(openPopup);
-  };
-};
-
-
-//функция для закрытия попапа
- function closePopup (popup) {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closeByEsc);
-}
 
 //функция-обработчик «отправки» формы изменных данных в профайле
 function formSubmitHandler (event) {
@@ -118,7 +99,7 @@ popupProfileCloseButton.addEventListener('click', () => {
 //слушатель открытия попапа по добавлению фото
 popupAddPhotoButton.addEventListener('click', () => {
   popupCardForm.reset();
-  popupAddCardSaveButton.classList.toggle('popup__save-button_inactive');
+  cardValidator.toggleButtonState();
   openPopup(popupAddCard);
 });
 
@@ -170,10 +151,11 @@ const profileValidator = new FormValidator(objSet.profileValidator, objSet);
 profileValidator.enableValidation();
 
 
+
 //валидация карточки
 const cardValidator = new FormValidator(objSet.cardValidator, objSet);
 cardValidator.enableValidation();
 
 
 
-export {openPopup, closePopup};
+
