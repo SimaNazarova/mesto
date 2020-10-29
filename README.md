@@ -6,5 +6,3 @@
 
 GitHub Pages https://simanazarova.github.io/mesto/index.html
 
-// "dev": "webpack-dev-server --open"
-
