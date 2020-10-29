@@ -1,27 +1,11 @@
-import {openPopup} from './utils.js';
-
-const popupPhoto  = document.querySelector('.popup_photo');
-const popupImage = document.querySelector('.popup__image');
-const popupImageName = document.querySelector('.popup__image-name');
-
-  class Card {
-  constructor(data, selector) {
+export default  class Card {
+  constructor(data, selector, {handleCardClick}) {
     this._link = data.link;
     this._name = data.name;
     this._selector = selector;
+    this._handleCardClick = handleCardClick;
   }
 
-  _getTemplate() {
-    // забираем размеку из HTML и клонируем элемент
-      const cardElement = document
-      .querySelector( this._selector)
-      .content
-      .querySelector('.element')
-      .cloneNode(true);
-
-    // вернём DOM-элемент карточки
-      return cardElement;
-  }
 
   generateCard() {
     // Запишем разметку в приватное поле _element.
@@ -32,41 +16,40 @@ const popupImageName = document.querySelector('.popup__image-name');
     this._element.querySelector('.element__image').src = this._link;
     this._element.querySelector('.element__name').textContent = this._name;
     this._element.querySelector('.element__image').alt = this._name;
-
     // Вернём элемент наружу
     return this._element;
+  }
+
+  _getTemplate() {
+    // забираем размеку из HTML и клонируем элемент
+      const cardElement = document
+      .querySelector( this._selector)
+      .content
+      .querySelector('.element')
+      .cloneNode(true);
+    // вернём DOM-элемент карточки
+      return cardElement;
   }
 
   _setEventListeners() {
     this._element.querySelector('.element__like-button').addEventListener('click', () =>  this._likeHandler());
     this._element.querySelector('.element__delete-button').addEventListener('click',  () =>  this._deleteHandler());
-    this._element.querySelector('.element__image').addEventListener('click',  () =>  this._viewPhotoHandler());
+    this._element.querySelector('.element__image').addEventListener('click',  () =>  this._handleCardClick());
   }
-
-
-
 //функция для лайка
-
 _likeHandler () {
   this._element.querySelector('.element__like-button').classList.toggle('element__like-button_active');
-
 }
-
 //функция по удалению карточек
-
 _deleteHandler() {
   this._element.closest('.element').remove();
-}
+ }
 
-//функция просмотр фотографии
-_viewPhotoHandler () {
-  popupImage.src = this._link;
-  popupImage.alt = this._name;
-  popupImageName.textContent = this._name;
-  openPopup(popupPhoto);
+ _handleCardClick() {
+  this._handleCardClick(this._link, this._name);
 }
 
 }
 
 
-export default Card;
+

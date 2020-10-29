@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
       name: 'Гонконг',
       link: 'https://images.unsplash.com/photo-1516893676001-52fdf7605797?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
@@ -25,7 +25,7 @@ const initialCards = [
   }
 ];
 
-const objSet = {
+export const objSet = {
   formSelector: '.popup__form',
   inputSelector: '.popup__form-item',
   submitButtonSelector: '.popup__save-button',
@@ -36,4 +36,18 @@ const objSet = {
   cardValidator:'.popup_add-card'
 }
 
-export {initialCards, objSet};
+export const cardListSelector = '.elements__table';
+const profile = document.querySelector('.profile');
+export const profileEditButton = profile.querySelector('.profile__edit-button');
+export const profileName = profile.querySelector('.profile__name');
+export const profileNameAbout = profile.querySelector('.profile__name-about');
+export const popupAddPhotoButton = profile.querySelector('.profile__add-button');
+
+export const elementsTable = document.querySelector('.elements__table');
+
+const popupAddCard = document.querySelector('.popup_add-card');
+
+export const cardNameInput = popupAddCard.querySelector('.popup__form-card-name');
+
+export const cardLinkInput = popupAddCard.querySelector('.popup__form-link');
+
