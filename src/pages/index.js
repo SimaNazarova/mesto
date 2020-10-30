@@ -6,7 +6,7 @@ import  PopupWithImage from '../components/PopupWithImage.js';
 import  PopupWithForm from '../components/PopupWithForm.js';
 import  UserInfo from '../components/UserInfo.js';
 import  {initialCards, objSet, cardListSelector, profileEditButton, profileName, profileNameAbout, popupAddPhotoButton,
-   elementsTable, cardNameInput, cardLinkInput } from '../utils.js/constants.js';
+   elementsTable} from '../utils.js/constants.js';
 
 
 
@@ -31,23 +31,6 @@ const addCardPopup = new PopupWithForm(
   }
 })
 
-
-const addCard = (evt) => {
-  evt.preventDefault();
-  const item = {
-    name: cardNameInput.value,
-    link: cardLinkInput.value
-  }
-  const card = new Card(item,'.element-template', {
-    handleCardClick: () =>{
-        popupWithImage.open(item.link, item.name)
-    }})
-  const cardElement = card.generateCard();
-  cardListSelector.addItem(cardElement);
-  addCardPopup.close();
-}
-
-popupAddPhotoButton.addEventListener('click', addCard);
 
 
 addCardPopup.setEventListeners();
@@ -122,3 +105,4 @@ const cardValidator = new FormValidator(objSet.cardValidator, objSet);
 cardValidator.enableValidation();
 
 //------------------------------------------------
+
