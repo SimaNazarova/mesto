@@ -73,7 +73,7 @@ const user = new UserInfo({
   job: '.profile__name-about'
 });
 
-user.getUserInfo();
+
 
 const editPopupProfile = new PopupWithForm(
  '.popup_profile',{
@@ -87,8 +87,9 @@ editPopupProfile.setEventListeners();
 
 
 profileEditButton.addEventListener('click', () => {
-  formName.value = profileName.textContent;
-  formJob.value = profileNameAbout.textContent;
+  const userData = user.getUserInfo();
+  formName.value = userData.name;
+  formJob.value = userData.job;
   editPopupProfile.open();
   })
 
