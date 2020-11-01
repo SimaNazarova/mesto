@@ -1,18 +1,21 @@
-export default class UserInfo{
-  constructor({userName, userAbout}) {
-    this._userName = userName;
-    this._userAbout = userAbout;
-    this._formName = document.querySelector('.popup__form-name');
-    this._formJob = document.querySelector('.popup__form-job')
-}
+export default class UserInfo {
 
-getUserInfo () {
-    this._formName.value = this._userName.textContent;
-    this._formJob.value = this._userAbout.textContent;
-}
+  constructor({name, job}) {
+    this._name = document.querySelector(name);
+    this._job = document.querySelector(job)
+  }
 
-setUserInfo () {
-    this._userName.textContent = this._formName.value;
-    this._userAbout.textContent = this._formJob.value;
-}
+  getUserInfo() {
+      const userInfo = {
+            name: this._name.textContent,
+            job: this._job.textContent,
+      }
+      return userInfo
+
+  }
+
+  setUserInfo(item) {
+    this._name.textContent  = item.name;
+    this._job.textContent = item.job;
+      }
 }

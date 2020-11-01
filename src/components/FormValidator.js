@@ -1,4 +1,4 @@
-   class FormValidator {
+class FormValidator {
   constructor(formSelector, objSet) {
     this._formSelector = formSelector
     this._formElement = document.querySelector(formSelector);
@@ -7,6 +7,8 @@
     this._inactiveButtonClass = objSet.inactiveButtonClass
     this._inputErrorClass = objSet.inputErrorClass
     this._errorClass = objSet.errorClass
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector)); //массив из инпутов
+    this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
   }
 
 
@@ -40,11 +42,10 @@ if (!inputElement.validity.valid) {
 
 // функция установки обработчикоы события-------------------------
 _setEventListeners () {
-  this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector)); //массив из инпутов
-  this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
+
 
 // чтобы проверить состояние кнопки в самом начале
-this.toggleButtonState(this._inputList, this._buttonElement);
+this.toggleButtonState();
 
  // Обойдём все элементы полученной коллекции
  this._inputList.forEach((inputElement) => {
@@ -85,7 +86,7 @@ this.toggleButtonState(this._inputList, this._buttonElement);
 
 enableValidation() {
   this._setEventListeners();
-};
+ };
 }
 
 

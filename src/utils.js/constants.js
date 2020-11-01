@@ -51,3 +51,6 @@ export const cardNameInput = popupAddCard.querySelector('.popup__form-card-name'
 
 export const cardLinkInput = popupAddCard.querySelector('.popup__form-link');
 
+export const formName = document.querySelector('.popup__form-name');
+export const formJob = document.querySelector('.popup__form-job')
+

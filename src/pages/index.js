@@ -5,8 +5,8 @@ import  FormValidator from '../components/FormValidator.js';
 import  PopupWithImage from '../components/PopupWithImage.js';
 import  PopupWithForm from '../components/PopupWithForm.js';
 import  UserInfo from '../components/UserInfo.js';
-import  {initialCards, objSet, cardListSelector, profileEditButton, profileName, profileNameAbout, popupAddPhotoButton,
-   elementsTable} from '../utils.js/constants.js';
+import  {initialCards, objSet, cardListSelector, profileEditButton, popupAddPhotoButton,
+   elementsTable, profileName, profileNameAbout, formName, formJob} from '../utils.js/constants.js';
 
 
 
@@ -69,23 +69,26 @@ cardList.renderItems();
 
 
 const user = new UserInfo({
-  userName: profileName,
-  userAbout: profileNameAbout
-})
+  name: '.profile__name',
+  job: '.profile__name-about'
+});
 
+user.getUserInfo();
 
 const editPopupProfile = new PopupWithForm(
  '.popup_profile',{
-  handleFormSubmit: () => {
-    user.setUserInfo();
+  handleFormSubmit: (item) => {
+    user.setUserInfo(item);
   }
 })
 
 editPopupProfile.setEventListeners();
 
 
+
 profileEditButton.addEventListener('click', () => {
-  user.getUserInfo();
+  formName.value = profileName.textContent;
+  formJob.value = profileNameAbout.textContent;
   editPopupProfile.open();
   })
 
