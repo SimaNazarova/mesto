@@ -3,8 +3,8 @@
   top: 50px;
   left: 50px;
   opacity: 0;
- }
+}
 
- .profile__upload-image:hover{
-   opacity: 1;
- }
+.profile__upload-image:hover {
+  opacity: 1;
+}

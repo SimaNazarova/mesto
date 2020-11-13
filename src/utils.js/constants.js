@@ -26,36 +26,39 @@
 // ];
 
 export const objSet = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__form-item',
-  submitButtonSelector: '.popup__save-button',
-  inactiveButtonClass: 'popup__save-button_inactive',
-  inputErrorClass: 'popup__form-item_active',
-  errorClass: 'popup__error_visible',
-  profileValidator: '.popup_profile',
-  cardValidator:'.popup_add-card',
-  avatarValidator:'.popup_upload-avatar'
-}
+  formSelector: ".popup__form",
+  inputSelector: ".popup__form-item",
+  submitButtonSelector: ".popup__save-button",
+  inactiveButtonClass: "popup__save-button_inactive",
+  inputErrorClass: "popup__form-item_active",
+  errorClass: "popup__error_visible",
+  profileValidator: ".popup_profile",
+  cardValidator: ".popup_add-card",
+  avatarValidator: ".popup_upload-avatar",
+};
 
-export const cardListSelector = '.elements__table';
-const profile = document.querySelector('.profile');
-export const profileEditButton = profile.querySelector('.profile__edit-button');
-export const profileName = profile.querySelector('.profile__name');
-export const profileNameAbout = profile.querySelector('.profile__name-about');
-export const popupAddPhotoButton = profile.querySelector('.profile__add-button');
-export const profileAvatar = profile.querySelector('.profile__avatar')
-export const popupAvatarOpen = document.querySelector('.profile__upload-button')
+export const cardListSelector = ".elements__table";
+const profile = document.querySelector(".profile");
+export const profileEditButton = profile.querySelector(".profile__edit-button");
+export const profileName = profile.querySelector(".profile__name");
+export const profileNameAbout = profile.querySelector(".profile__name-about");
+export const popupAddPhotoButton = profile.querySelector(
+  ".profile__add-button"
+);
+export const profileAvatar = profile.querySelector(".profile__avatar");
+export const popupAvatarOpen = document.querySelector(
+  ".profile__upload-button"
+);
 
-export const elementsTable = document.querySelector('.elements__table');
+export const elementsTable = document.querySelector(".elements__table");
 
-const popupAddCard = document.querySelector('.popup_add-card');
+const popupAddCard = document.querySelector(".popup_add-card");
 
-export const cardNameInput = popupAddCard.querySelector('.popup__form-card-name');
+export const cardNameInput = popupAddCard.querySelector(
+  ".popup__form-card-name"
+);
 
-export const cardLinkInput = popupAddCard.querySelector('.popup__form-link');
+export const cardLinkInput = popupAddCard.querySelector(".popup__form-link");
 
-export const formName = document.querySelector('.popup__form-name');
-export const formJob = document.querySelector('.popup__form-job');
-
-
-
+export const formName = document.querySelector(".popup__form-name");
+export const formJob = document.querySelector(".popup__form-job");

@@ -1,7 +1,7 @@
 .popup__error {
   font-size: 12px;
   line-height: 1.25;
-  color: #FF0000;
+  color: #ff0000;
   position: absolute;
   transition: opacity 0.3s;
 }

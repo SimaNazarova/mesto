@@ -9,6 +9,6 @@
 
 @media all and (max-width: 905px) {
   .elements__table {
-   row-gap: 20px;
+    row-gap: 20px;
   }
 }

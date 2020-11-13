@@ -7,8 +7,8 @@
   opacity: 1;
 }
 
- @media all and (max-width: 500px) {
-   .profile__avatar {
-     margin: 0;
-   }
- }
+@media all and (max-width: 500px) {
+  .profile__avatar {
+    margin: 0;
+  }
+}
