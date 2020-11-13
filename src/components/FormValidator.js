@@ -1,4 +1,4 @@
-class FormValidator {
+export default class FormValidator {
   constructor(formSelector, objSet) {
     this._formSelector = formSelector
     this._formElement = document.querySelector(formSelector);
@@ -42,7 +42,6 @@ if (!inputElement.validity.valid) {
 
 // функция установки обработчикоы события-------------------------
 _setEventListeners () {
-
 
 // чтобы проверить состояние кнопки в самом начале
 this.toggleButtonState();
@@ -90,5 +89,6 @@ enableValidation() {
 }
 
 
-export default FormValidator;
+
+
 

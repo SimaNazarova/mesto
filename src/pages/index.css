@@ -37,4 +37,15 @@
 @import url("../blocks/popup/__save-button/_inactive/popup__save-button_inactive.css");
 @import url("../blocks/popup/__form-item/_active/popup__form-item_active.css");
 @import url("../blocks/popup/__error/popup__error.css");
-@import url("../blocks/popup/__error/_visible/popup__error_visible.css");
+@import url("../blocks/profile/__upload-image.css/profile__upload-image.css");
+@import url("../blocks/profile/__info/profile__info.css");
+@import url("../blocks/profile/__upload-button/profile__upload-button.css");
+@import url("../blocks/element/__like-number/element__like-number.css");
+@import url("../blocks/element/__delete-button/_hidden/element__delete-button_hidden.css");
+
+
+
+
+
+
+
