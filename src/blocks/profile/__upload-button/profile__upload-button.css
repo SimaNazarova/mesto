@@ -8,6 +8,10 @@
   cursor: pointer;
 }
 
+.profile__upload-button:focus {
+  outline: none;
+}
+
 .profile__upload-button:hover .profile__upload-image {
   opacity: 1;
 }

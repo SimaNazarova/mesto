@@ -22,3 +22,7 @@
   opacity: 0.6;
   cursor: pointer;
 }
+
+.profile__add-button:focus {
+  outline: none;
+}
